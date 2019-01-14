@@ -31,10 +31,10 @@ function CreditHoursIsValid(e) {
 }
 
 function ComputeRow(e) {
-    var t = $("input[name='units']", $(e.target).parents("tr:first")).val();
+    var t = jQuery("input[name='units']", jQuery(e.target).parents("tr:first")).val();
     if (CreditHoursIsValid(t)) {
-        var n = $("input[name='gradePre']", $(e.target).parents("tr:first")).val();
-        var r = $("input[name='gradePost']", $(e.target).parents("tr:first")).val();
+        var n = jQuery("input[name='gradePre']", jQuery(e.target).parents("tr:first")).val();
+        var r = jQuery("input[name='gradePost']", jQuery(e.target).parents("tr:first")).val();
         var i;
         if (n != "" && r == "") {
             i = ConvertGradeToValue(true, n)
@@ -42,24 +42,24 @@ function ComputeRow(e) {
             i = ConvertGradeToValue(false, r)
         } else if (n != "" && r != "") {
             alert("Please only enter one grade per row.");
-            $("input[name='gradepoints']", $(e.target).parents("tr:first")).val("");
+            jQuery("input[name='gradepoints']", jQuery(e.target).parents("tr:first")).val("");
             return
         }
         if (i >= 0) {
             var s = t * i;
-            $("input[name='gradepoints']", $(e.target).parents("tr:first")).val(s.toFixed(3))
+            jQuery("input[name='gradepoints']", jQuery(e.target).parents("tr:first")).val(s.toFixed(3))
         }
     } else if (t != "") {
         alert("Invalid number of credits entered.  '" + t + "' is not a number between 0.5 and 999.");
-        $("input[name='units']", $(e.target).parents("tr:first")).focus()
+        jQuery("input[name='units']", jQuery(e.target).parents("tr:first")).focus()
     }
 }
 
 function ClearRow(e) {
-    $("input[name='units']", $(e.target).parents("tr:first")).val("");
-    $("input[name='gradePre']", $(e.target).parents("tr:first")).val("");
-    $("input[name='gradePost']", $(e.target).parents("tr:first")).val("");
-    $("input[name='gradepoints']", $(e.target).parents("tr:first")).val("");
+    jQuery("input[name='units']", jQuery(e.target).parents("tr:first")).val("");
+    jQuery("input[name='gradePre']", jQuery(e.target).parents("tr:first")).val("");
+    jQuery("input[name='gradePost']", jQuery(e.target).parents("tr:first")).val("");
+    jQuery("input[name='gradepoints']", jQuery(e.target).parents("tr:first")).val("");
     SumForm()
 }
 
@@ -67,36 +67,36 @@ function SumForm() {
     var e = 0,
         t = 0,
         n;
-    $("input[name='units']").each(function() {
-        if ($(this).val() != "") {
-            e += parseFloat($(this).val())
+    jQuery("input[name='units']").each(function() {
+        if (jQuery(this).val() != "") {
+            e += parseFloat(jQuery(this).val())
         }
     });
-    $("input[name='gradepoints']").each(function() {
-        if ($(this).val() != "") {
-            t += parseFloat($(this).val())
+    jQuery("input[name='gradepoints']").each(function() {
+        if (jQuery(this).val() != "") {
+            t += parseFloat(jQuery(this).val())
         }
     });
     n = t / e;
-    $("#TotalCredits").val(e);
-    $("#TotalPointsEarned").val(t.toFixed(3));
+    jQuery("#TotalCredits").val(e);
+    jQuery("#TotalPointsEarned").val(t.toFixed(3));
     if (e > 0) {
         n = Math.floor(n * 1e3) / 1e3;
-        $("#TotalGPA").val(n.toFixed(3));
+        jQuery("#TotalGPA").val(n.toFixed(3));
         var r = 0;
         if (n < 2) {
             r = parseFloat(e * 2) - t
         }
-        $("#DeficitPoints").val(r.toFixed(3))
+        jQuery("#DeficitPoints").val(r.toFixed(3))
     } else {
-        $("#TotalGPA").val(0);
-        $("#DeficitPoints").val(0)
+        jQuery("#TotalGPA").val(0);
+        jQuery("#DeficitPoints").val(0)
     }
 }
 
 function ResetTotals() {
-    $("#TotalCredits").val("");
-    $("#TotalPointsEarned").val("");
-    $("#TotalGPA").val("");
-    $("#DeficitPoints").val("")
+    jQuery("#TotalCredits").val("");
+    jQuery("#TotalPointsEarned").val("");
+    jQuery("#TotalGPA").val("");
+    jQuery("#DeficitPoints").val("")
 }

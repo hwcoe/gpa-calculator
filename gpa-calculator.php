@@ -9,9 +9,7 @@ Author URI: http://www.eng.ufl.edu
 */
 
 function calculator_shortcode() {
-	// Registering the scripts and style
-	// wp_register_style('wpb-jquery-ui-style', 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/themes/humanity/jquery-ui.css', false, null);
-	// wp_enqueue_style('wpb-jquery-ui-style');
+	// Registering the scripts
 	wp_register_script('gpa-calculator-js', plugins_url('js/gpa_calculator.js', __FILE__ ), '', '', false);
 	wp_enqueue_script('gpa-calculator-js');
 	wp_register_script('gpa-calculator-init', plugins_url('js/gpa_calculator_init.js', __FILE__ ), '', '', false);
