@@ -2,9 +2,9 @@
 /*
 Plugin Name: GPA Calculator
 Description: Allows UF Students to calculate GPA using both pre-2009 and post-2009 grading schemes.
-Version: 1.1
+Version: 1.2
 License: GPL
-Author: UF College of Engineering - Sarah Zachrich Jeng
+Author: Herbert Wertheim College of Engineering - Sarah Zachrich Jeng
 Author URI: http://www.eng.ufl.edu
 */
 
